@@ -2,10 +2,8 @@ import sublime
 import sublime_plugin
 
 class MarkdownAddCodeBlockCommand(sublime_plugin.TextCommand):
-  _input = None
   def run(self, edit, key = '', val = '', save = True):
-    if not self._input:
-      self._input = sublime.active_window().show_input_panel('Language Name', '', self.on_done, self.on_change, self.on_close)
+    self._input = self.view.window().show_input_panel('Language Name', '', self.on_done, self.on_change, self.on_close)
 
     self.on_change(path)
 
@@ -17,7 +15,7 @@ class MarkdownAddCodeBlockCommand(sublime_plugin.TextCommand):
     })
 
   def on_close(self):
-    self._input = None
+    pass
 
   def on_change(self):
     pass
